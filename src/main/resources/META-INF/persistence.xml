@@ -7,14 +7,12 @@
     <persistence-unit name="PERSISTENCE">
         <description> Hibernate JPA Configuration Example</description>
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>com.example.javafx_jpa_iage3.model.Produit</class>
-        <class>com.example.javafx_jpa_iage3.Repository.JPAUtil</class>
-        <class>com.example.javafx_jpa_iage3.Repository.ProduitRepository</class>
+        <class>org.example.gestioncovoiturage.Models.Users</class>
         <properties>
             <property name="jakarta.persistence.jdbc.driver"
                       value="com.mysql.cj.jdbc.Driver" />
             <property name="jakarta.persistence.jdbc.url"
-                      value="jdbc:mysql://localhost:3306/jpa_fx_iage3" />
+                      value="jdbc:mysql://localhost:3306/gestioncovoiturage" />
             <property name="jakarta.persistence.jdbc.user" value="Rahim" />
             <property name="jakarta.persistence.jdbc.password"
                       value="passer" />
