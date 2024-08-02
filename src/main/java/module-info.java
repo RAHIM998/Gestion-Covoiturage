@@ -7,6 +7,7 @@ module org.example.gestioncovoiturage {
     requires spring.security.core;
     requires java.sql;
     requires org.hibernate.orm.core;
+    requires javax.mail.api;
 
 
     opens org.example.gestioncovoiturage to javafx.fxml;

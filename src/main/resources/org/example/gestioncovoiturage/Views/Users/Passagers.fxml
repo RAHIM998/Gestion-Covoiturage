@@ -22,15 +22,15 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <TableView fx:id="TabPassagers" layoutY="223.0" onMouseClicked="#LaodEditPassager" prefHeight="200.0" prefWidth="735.0">
+      <TableView fx:id="TabPassagers" layoutY="223.0" onMouseClicked="#LaodEditPassager" prefHeight="320.0" prefWidth="781.0">
         <columns>
           <TableColumn fx:id="tId" prefWidth="60.0" text="Id" />
-          <TableColumn fx:id="tNom" prefWidth="114.0" text="Nom" />
-            <TableColumn fx:id="tPrenom" prefWidth="176.0" text="Prénom" />
-            <TableColumn fx:id="tTelephone" prefWidth="148.0" text="Téléphone" />
-            <TableColumn fx:id="tEmail" prefWidth="236.0" text="Email" />
+          <TableColumn fx:id="tNom" prefWidth="138.0" text="Nom" />
+            <TableColumn fx:id="tPrenom" prefWidth="219.0" text="Prénom" />
+            <TableColumn fx:id="tTelephone" prefWidth="161.0" text="Téléphone" />
+            <TableColumn fx:id="tEmail" prefWidth="202.0" text="Email" />
         </columns>
       </TableView>
-      <Button layoutX="640.0" layoutY="188.0" mnemonicParsing="false" onMouseClicked="#Delete" text="Supprimer" />
+      <Button layoutX="681.0" layoutY="182.0" mnemonicParsing="false" onMouseClicked="#Delete" text="Supprimer" />
    </children>
 </AnchorPane>

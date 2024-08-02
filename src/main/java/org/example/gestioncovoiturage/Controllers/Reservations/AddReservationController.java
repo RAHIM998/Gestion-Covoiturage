@@ -11,6 +11,7 @@ import org.example.gestioncovoiturage.Models.Users;
 import org.example.gestioncovoiturage.Repository.ReservationRepository;
 import org.example.gestioncovoiturage.Repository.TrajetRepository;
 import org.example.gestioncovoiturage.Repository.UserRepository;
+import org.example.gestioncovoiturage.Services.EmailService;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -22,6 +23,7 @@ public class AddReservationController implements Initializable {
         this.userRepository = UserRepository.builder().build();
         this.reservationRepository = ReservationRepository.builder().build();
         this.trajetRepository = TrajetRepository.builder().build();
+        this.emailService = new EmailService();
 
         configurePassagerComboBox();
         configureTrajetComboBox();
@@ -30,6 +32,8 @@ public class AddReservationController implements Initializable {
     UserRepository userRepository;
     ReservationRepository reservationRepository;
     TrajetRepository trajetRepository;
+    private EmailService emailService;
+
 
 
     @FXML
@@ -141,7 +145,7 @@ public class AddReservationController implements Initializable {
         Reservation reservation = new Reservation();
         reservation.setPassager(passager);
         reservation.setTrajet(trajet);
-        reservation.setDateReservation(dateReservation.atStartOfDay()); // Convertir LocalDate en LocalDateTime
+        reservation.setDateReservation(dateReservation.atStartOfDay());
         reservation.setNbPlaceReservation(nbPlace);
 
         try {
@@ -152,6 +156,16 @@ public class AddReservationController implements Initializable {
             successAlert.setHeaderText(null);
             successAlert.setContentText("La réservation a été ajoutée avec succès.");
             successAlert.showAndWait();
+
+            // Envoyer un email de confirmation
+            String subject = "Confirmation de réservation";
+            String content = "Votre réservation pour le trajet "
+                    + trajet.getVilleDepart() + " à " + trajet.getVilleArrivee() +
+                    " a été confirmée. Votre date de reservation est le " + reservation.getDateReservation() +
+                    ". Nombre de place reservée : " + reservation.getNbPlaceReservation() +
+                    " Merci de tout faire pour être là à l'heure. Je vous remercie à l'avance.";
+            emailService.sendEmail(passager.getEmail(), subject, content);
+
 
             Clear(event); // Réinitialiser les champs après ajout
         } catch (RuntimeException e) {

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="475.0" prefWidth="755.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gestioncovoiturage.Controllers.Users.EditAdministrationController">
+   <children>
+      <Label layoutX="98.0" layoutY="14.0" text="Formulaire de modification des administrateurs" textFill="WHITE" underline="true">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="120.0" layoutY="124.0" prefHeight="37.0" prefWidth="121.0" text="Nom" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="cNom" layoutX="248.0" layoutY="124.0" prefHeight="37.0" prefWidth="325.0" />
+      <Label layoutX="120.0" layoutY="201.0" prefHeight="37.0" prefWidth="121.0" text="Prénom" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="cPrenom" layoutX="248.0" layoutY="201.0" prefHeight="37.0" prefWidth="325.0" />
+      <Label layoutX="120.0" layoutY="283.0" prefHeight="37.0" prefWidth="121.0" text="Téléphone" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="cTelephone" layoutX="248.0" layoutY="283.0" prefHeight="37.0" prefWidth="325.0" />
+      <Button layoutX="203.0" layoutY="393.0" mnemonicParsing="false" onAction="#Update" prefHeight="37.0" prefWidth="121.0" text="Modifier">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="411.0" layoutY="393.0" mnemonicParsing="false" onAction="#Clear" prefHeight="37.0" prefWidth="121.0" text="Annuler">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <TextField fx:id="tId" layoutX="95.0" layoutY="87.0" visible="false" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="535.0" prefWidth="729.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gestioncovoiturage.Controllers.Users.ListAdministrationController">
+   <children>
+      <Label layoutX="260.0" layoutY="11.0" text="Liste des administrateurs" textFill="#fffbfb" underline="true">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="151.0" layoutY="82.0" prefHeight="36.0" prefWidth="142.0" text="Rechercher" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tRechercher" layoutX="306.0" layoutY="82.0" prefHeight="36.0" prefWidth="313.0" />
+      <Button layoutX="619.0" layoutY="197.0" mnemonicParsing="false" onAction="#Delete" text="Supprimer">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <TableView fx:id="TabAdmin" layoutY="244.0" onMouseClicked="#CallFormModifAdmin" prefHeight="291.0" prefWidth="742.0">
+        <columns>
+          <TableColumn fx:id="tId" prefWidth="64.0" text="Id" />
+          <TableColumn fx:id="tNom" prefWidth="125.0" text="Nom" />
+            <TableColumn fx:id="tPrenom" prefWidth="215.0" text="Prénom" />
+            <TableColumn fx:id="tTelephone" prefWidth="135.0" text="Téléphone" />
+            <TableColumn fx:id="tEmail" prefWidth="254.0" text="Email" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -76,7 +76,33 @@ public class UserRepository {
         try {
             RoleUser role = RoleUser.PASSAGER;
 
-            // Utilisation de TypedQuery pour une requête typée
+            TypedQuery<Users> query = entityManager.createQuery(
+                    "SELECT u FROM Users u JOIN FETCH u.compte c WHERE u.role = :role", Users.class
+            );
+            query.setParameter("role", role);
+
+            passagers.addAll(query.getResultList());
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
+            if (entityManager.isOpen()) {
+                entityManager.close();
+            }
+        }
+
+        return passagers;
+    }
+
+    //Lister les administrateurs
+    public ObservableList<Users> getAllAdmin() {
+
+        EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        ObservableList<Users> passagers = FXCollections.observableArrayList();
+
+        try {
+            RoleUser role = RoleUser.ADMIN;
+
             TypedQuery<Users> query = entityManager.createQuery(
                     "SELECT u FROM Users u JOIN FETCH u.compte c WHERE u.role = :role", Users.class
             );
@@ -84,7 +110,7 @@ public class UserRepository {
             passagers.addAll(query.getResultList());
         } catch (Exception e) {
             e.printStackTrace();
-            throw e; // Rethrow l'exception pour la gestion en amont
+            throw e;
         } finally {
             if (entityManager.isOpen()) {
                 entityManager.close();
@@ -102,18 +128,16 @@ public class UserRepository {
         try {
             RoleUser role = RoleUser.CONDUCTEUR;
 
-            // Utilisation de TypedQuery pour une requête typée
             TypedQuery<Users> query = entityManager.createQuery(
                     "SELECT u FROM Users u WHERE u.role = :role", Users.class
             );
             query.setParameter("role", role);
             List<Users> conducteurs = query.getResultList();
 
-            // Ajouter les utilisateurs à la liste observable
             conducteursObservableList.addAll(conducteurs);
         } catch (Exception e) {
             e.printStackTrace();
-            throw e; // Rethrow l'exception pour la gestion en amont
+            throw e;
         } finally {
             if (entityManager.isOpen()) {
                 entityManager.close();
@@ -182,25 +206,29 @@ public class UserRepository {
 
     // Méthode pour rechercher des utilisateurs par nom, prénom ou email
     public ObservableList<Users> searchUsers(String searchTerm) {
+
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         ObservableList<Users> foundUsers = FXCollections.observableArrayList();
 
         try {
-            // Utilisation de la requête JPQL pour rechercher des utilisateurs par nom, prénom ou email
+            RoleUser role = RoleUser.PASSAGER;
+
             TypedQuery<Users> query = entityManager.createQuery(
                     "SELECT u FROM Users u JOIN u.compte c WHERE " +
-                            "LOWER(u.nom) LIKE LOWER(:searchTerm) " +
+                            "(LOWER(u.nom) LIKE LOWER(:searchTerm) " +
                             "OR LOWER(u.prenom) LIKE LOWER(:searchTerm) " +
-                            "OR LOWER(c.email) LIKE LOWER(:searchTerm)", Users.class
+                            "OR LOWER(c.email) LIKE LOWER(:searchTerm)) " +
+                            "AND u.role = :role", Users.class
             );
+
             query.setParameter("searchTerm", "%" + searchTerm + "%");
+            query.setParameter("role", role);
             List<Users> users = query.getResultList();
 
-            // Ajouter les utilisateurs trouvés à la liste observable
             foundUsers.addAll(users);
         } catch (Exception e) {
             e.printStackTrace();
-            throw e; // Rethrow l'exception pour la gestion en amont
+            throw e;
         } finally {
             if (entityManager.isOpen()) {
                 entityManager.close();
@@ -210,27 +238,64 @@ public class UserRepository {
         return foundUsers;
     }
 
-    // Méthode pour rechercher des chauffeurs par nom, prénom ou téléphone
+    //Recherche des chauffeur
     public ObservableList<Users> searchChauffeurs(String searchTerm) {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         ObservableList<Users> foundUsers = FXCollections.observableArrayList();
 
         try {
-            // Utilisation de la requête JPQL pour rechercher des utilisateurs par nom, prénom ou téléphone
+            RoleUser role = RoleUser.CONDUCTEUR;
+
             TypedQuery<Users> query = entityManager.createQuery(
                     "SELECT u FROM Users u WHERE " +
-                            "LOWER(u.nom) LIKE LOWER(:searchTerm) " +
+                            "(LOWER(u.nom) LIKE LOWER(:searchTerm) " +
                             "OR LOWER(u.prenom) LIKE LOWER(:searchTerm) " +
-                            "OR LOWER(u.telephone) LIKE LOWER(:searchTerm)", Users.class
+                            "OR LOWER(u.telephone) LIKE LOWER(:searchTerm)) " +
+                            "AND u.role = :role", Users.class
             );
+
             query.setParameter("searchTerm", "%" + searchTerm + "%");
+            query.setParameter("role", role); // Ajout du paramètre rôle
             List<Users> users = query.getResultList();
 
-            // Ajouter les utilisateurs trouvés à la liste observable
             foundUsers.addAll(users);
         } catch (Exception e) {
             e.printStackTrace();
-            throw e; // Rethrow l'exception pour la gestion en amont
+            throw e;
+        } finally {
+            if (entityManager.isOpen()) {
+                entityManager.close();
+            }
+        }
+
+        return foundUsers;
+    }
+
+    //Recherche des administrateurs
+    public ObservableList<Users> searchAdmin(String searchTerm) {
+        EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        ObservableList<Users> foundUsers = FXCollections.observableArrayList();
+
+        try {
+            RoleUser role = RoleUser.ADMIN;
+
+            TypedQuery<Users> query = entityManager.createQuery(
+                    "SELECT u FROM Users u JOIN u.compte c WHERE " +
+                            "(LOWER(u.nom) LIKE LOWER(:searchTerm) " +
+                            "OR LOWER(u.prenom) LIKE LOWER(:searchTerm) " +
+                            "OR LOWER(u.telephone) LIKE LOWER(:searchTerm) " +
+                            "OR LOWER(c.email) LIKE LOWER(:searchTerm)) " +
+                            "AND u.role = :role", Users.class
+            );
+
+            query.setParameter("searchTerm", "%" + searchTerm + "%");
+            query.setParameter("role", role);
+            List<Users> users = query.getResultList();
+
+            foundUsers.addAll(users);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
         } finally {
             if (entityManager.isOpen()) {
                 entityManager.close();

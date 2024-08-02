@@ -1,8 +1,6 @@
 package org.example.gestioncovoiturage.Models;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.example.gestioncovoiturage.util.PasswordUtil;
@@ -28,6 +26,10 @@ public class Compte {
     }
 
     //Constructeur sans argument
+    public Compte(String email) {
+        this.email = email;
+    }
+
     public Compte() {
 
     }

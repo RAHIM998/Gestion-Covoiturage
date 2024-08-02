@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="433.0" prefWidth="774.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gestioncovoiturage.Controllers.Compte.ComptesControllers">
+   <children>
+      <Label layoutX="282.0" layoutY="20.0" text="Liste des comptes " textFill="WHITE" underline="true">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="190.0" layoutY="100.0" prefHeight="33.0" prefWidth="118.0" text="Rechercher" textFill="#fcfcfc">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tRechercher" layoutX="348.0" layoutY="100.0" prefHeight="33.0" prefWidth="283.0" />
+      <TableView fx:id="TabCompte" layoutX="33.0" layoutY="185.0" onMouseClicked="#CallFormEditCompte" prefHeight="224.0" prefWidth="551.0">
+        <columns>
+          <TableColumn fx:id="tId" prefWidth="120.0" text="id" />
+          <TableColumn fx:id="tEmail" minWidth="0.0" prefWidth="459.0" text="Email" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

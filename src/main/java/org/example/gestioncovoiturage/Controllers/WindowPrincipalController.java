@@ -13,9 +13,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import org.example.gestioncovoiturage.Controllers.Compte.ComptesControllers;
 import org.example.gestioncovoiturage.Controllers.Reservations.ReservationController;
 import org.example.gestioncovoiturage.Controllers.Trajet.TrajetController;
 import org.example.gestioncovoiturage.Controllers.Users.ChauffeurController;
+import org.example.gestioncovoiturage.Controllers.Users.ListAdministrationController;
 import org.example.gestioncovoiturage.Controllers.Users.ListUsersController;
 import org.example.gestioncovoiturage.Controllers.Users.PassagerController;
 import org.example.gestioncovoiturage.Controllers.Vehicule.VehiculeController;
@@ -228,15 +230,48 @@ public class WindowPrincipalController implements Initializable {
         // Implémentation pour ouvrir le rapport
     }
 
+
+    @FXML
+    void OpenAdministration(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("/org/example/gestioncovoiturage/Views/Users/ListAdministration.fxml"));
+            Parent root = loader.load();
+
+            // Récupérer le contrôleur et passer le StackPane
+            ListAdministrationController listAdministrationController = loader.getController();
+            listAdministrationController.setStackPane(stackPane);
+
+            stackPane.getChildren().clear();
+            stackPane.getChildren().add(root);
+            stackPane.setPadding(new Insets(10, 10, 10, 40));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void OpenComptes(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("/org/example/gestioncovoiturage/Views/Compte/Comptes.fxml"));
+            Parent root = loader.load();
+
+            // Récupérer le contrôleur et passer le StackPane
+            ComptesControllers comptesControllers = loader.getController();
+            comptesControllers.setStackPane(stackPane);
+
+            stackPane.getChildren().clear();
+            stackPane.getChildren().add(root);
+            stackPane.setPadding(new Insets(10, 10, 10, 40));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     void OpenAddUser(MouseEvent event) {
         loadView("/org/example/gestioncovoiturage/Views/Users/AddUser.fxml", new Insets(10, 30, 5, 30));
     }
 
-    @FXML
-    void OpenAdministration(MouseEvent event) {
-        // Implémentation pour ouvrir l'administration
-    }
 
     private void loadView(String fxmlPath, Insets padding) {
         try {

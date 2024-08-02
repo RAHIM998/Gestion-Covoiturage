@@ -71,7 +71,7 @@ public class ListUsersController implements Initializable {
     void AddUser(ActionEvent event) {
         try {
             // Création de  l'utilisateur
-            Users newUser = new Users(cNom.getText(), cPrenom.getText(), cTelephone.getText(), RoleCbx.getValue());
+            Users newUser = new Users(cPrenom.getText(), cNom.getText(), cTelephone.getText(), RoleCbx.getValue());
             Users savedUser = userRepository.addUser(newUser);
 
             // Création du compte associer à l'utilisateur
