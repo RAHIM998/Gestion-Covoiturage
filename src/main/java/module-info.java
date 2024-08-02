@@ -13,4 +13,11 @@ module org.example.gestioncovoiturage {
     exports org.example.gestioncovoiturage;
     opens org.example.gestioncovoiturage.Models;
     exports org.example.gestioncovoiturage.Models;
+    exports org.example.gestioncovoiturage.Controllers;
+    opens org.example.gestioncovoiturage.Controllers to javafx.fxml;
+    opens org.example.gestioncovoiturage.Controllers.Users to javafx.fxml;
+    opens org.example.gestioncovoiturage.Controllers.Compte to javafx.fxml;
+    opens org.example.gestioncovoiturage.Controllers.Reservations to javafx.fxml;
+    opens org.example.gestioncovoiturage.Controllers.Trajet to javafx.fxml;
+    opens org.example.gestioncovoiturage.Controllers.Vehicule to javafx.fxml;
 }

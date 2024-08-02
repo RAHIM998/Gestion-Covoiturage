@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.shape.Line?>
+<AnchorPane prefHeight="518.0" prefWidth="700.0" style="-fx-background-color: black;"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.gestioncovoiturage.Controllers.Users.AddChauffeurController">
+
+    <children>
+        <Label layoutX="68.0" layoutY="113.0" prefHeight="33.0" prefWidth="114.0" text="Nom" textFill="WHITE">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <TextField fx:id="cnom" layoutX="223.0" layoutY="109.0" prefHeight="33.0" prefWidth="268.0" />
+        <Label layoutX="68.0" layoutY="177.0" prefHeight="33.0" prefWidth="114.0" text="Prénom" textFill="WHITE">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <TextField fx:id="cprenom" layoutX="223.0" layoutY="173.0" prefHeight="33.0" prefWidth="268.0" />
+        <Label layoutX="67.0" layoutY="244.0" prefHeight="33.0" prefWidth="114.0" text="Téléphone" textFill="WHITE">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <TextField fx:id="ctelephone" layoutX="222.0" layoutY="240.0" prefHeight="33.0" prefWidth="268.0" />
+        <Line endX="-11.0" endY="252.0" layoutX="565.0" layoutY="177.0" startX="-11.0" startY="-68.0" stroke="#fcfcfc" />
+        <Button layoutX="582.0" layoutY="117.0" mnemonicParsing="false" onAction="#Add" text="Ajouter">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+        <Button layoutX="582.0" layoutY="173.0" mnemonicParsing="false" onAction="#clear" text="Annuler">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+        <Label layoutX="182.0" layoutY="29.0" text="Formulaire d'ajout de chauffeur" textFill="#f5f3f3" underline="true">
+            <font>
+                <Font size="23.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

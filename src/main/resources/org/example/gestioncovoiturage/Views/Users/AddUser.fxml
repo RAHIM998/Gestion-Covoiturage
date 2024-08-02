@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="518.0" prefWidth="700.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gestioncovoiturage.Controllers.Users.ListUsersController">
+   <children>
+      <Label layoutX="194.0" layoutY="17.0" text="Formulaire d'ajout d'utilisateur" textFill="WHITE" underline="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="53.0" layoutY="96.0" prefHeight="31.0" prefWidth="133.0" text="Nom" textFill="#f5f4f4">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="cNom" layoutX="238.0" layoutY="96.0" prefHeight="31.0" prefWidth="244.0" />
+      <Label layoutX="53.0" layoutY="163.0" prefHeight="31.0" prefWidth="127.0" text="Prénom" textFill="#f5f4f4">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="cPrenom" layoutX="238.0" layoutY="163.0" prefHeight="31.0" prefWidth="244.0" />
+      <Label layoutX="53.0" layoutY="223.0" prefHeight="31.0" prefWidth="119.0" text="Téléphone" textFill="#f5f4f4">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="cTelephone" layoutX="238.0" layoutY="223.0" prefHeight="31.0" prefWidth="244.0" />
+      <Label layoutX="54.0" layoutY="330.0" prefHeight="31.0" prefWidth="133.0" text="Email" textFill="#f5f4f4">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="cEmail" layoutX="238.0" layoutY="330.0" prefHeight="31.0" prefWidth="244.0" />
+      <Label layoutX="54.0" layoutY="396.0" prefHeight="31.0" prefWidth="127.0" text="Mot de passe" textFill="#f5f4f4">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="cPassword" layoutX="231.0" layoutY="396.0" prefHeight="31.0" prefWidth="265.0" />
+      <Label layoutX="51.0" layoutY="275.0" prefHeight="31.0" prefWidth="119.0" text="Role" textFill="#f5f4f4">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="RoleCbx" layoutX="237.0" layoutY="272.0" prefHeight="31.0" prefWidth="244.0" />
+      <Button layoutX="571.0" layoutY="99.0" mnemonicParsing="false" onAction="#AddUser" text="Ajouter">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Line endX="-4.0" endY="308.0" layoutX="538.0" layoutY="117.0" startX="-4.0" startY="-18.0" stroke="#f8f8f8" />
+      <Button layoutX="570.0" layoutY="161.0" mnemonicParsing="false" onAction="#Clear" text="Annuler">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+
+   </children>
+</AnchorPane>

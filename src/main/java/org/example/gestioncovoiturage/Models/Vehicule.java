@@ -18,9 +18,30 @@ public class Vehicule {
 
     @Column(nullable = false, unique = true)
     private String immatriculation;
+    
+    //Constructeurs 
+    public Vehicule(String marque, String modele, String immatriculation, Users utilisateur) {
+        this.marque = marque;
+        this.modele = modele;
+        this.immatriculation = immatriculation;
+        this.utilisateur = utilisateur;
+    }
 
     // Relation du véhicule à l'utilisateur
     @OneToOne
     @JoinColumn(name = "utilisateur_id", nullable = false)
-    private Users utilisateur; // singular
+    private Users utilisateur;
+
+    public Vehicule() {
+
+    }
+
+
+    public Users getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Users utilisateur) {
+        this.utilisateur = utilisateur;
+    }
 }

@@ -2,10 +2,13 @@ package org.example.gestioncovoiturage.Models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "users")
 public class Users {
@@ -26,8 +29,21 @@ public class Users {
     private RoleUser role;
 
     // Constructeur pour user
+    public Users(String prenom, String nom, String telephone, RoleUser role) {
+        this.prenom = prenom;
+        this.nom = nom;
+        this.telephone = telephone;
+        this.role = role != null ? role : RoleUser.PASSAGER;
+    }
+
+    //Constructeur pour la création d'un passager
+    public Users(String prenom, String nom, String telephone) {
+        this.prenom = prenom;
+        this.nom = nom;
+        this.telephone = telephone;
+    }
+
     public Users() {
-        this.role = RoleUser.PASSAGER;
     }
 
     // S'assurer du remplissage du role avant de persister
@@ -38,12 +54,20 @@ public class Users {
         }
     }
 
+    //Recupération de l'email de l'utilisateur
+    public String getEmail() {
+        if (compte != null) {
+            return compte.getEmail();
+        }
+        return null;
+    }
+
     // Relations entre les conducteurs et véhicule
     @OneToOne(mappedBy = "utilisateur", cascade = CascadeType.ALL)
     private Vehicule vehicule;
 
     // Relations entre Conducteurs et trajet
-    @ManyToMany(mappedBy = "conducteurs", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "conducteur", cascade = CascadeType.ALL)
     private List<Trajet> trajets;
 
     // Relation entre passager et reservation
@@ -53,4 +77,17 @@ public class Users {
     // Relation entre users et compte
     @OneToOne(mappedBy = "utilisateur", cascade = CascadeType.ALL)
     private Compte compte;
+
+    public Compte getCompte() {
+        return compte;
+    }
+
+    public void setCompte(Compte compte) {
+        this.compte = compte;
+    }
+
+    public String getFullName() {
+        return this.nom + " " + this.prenom;
+    }
+
 }
