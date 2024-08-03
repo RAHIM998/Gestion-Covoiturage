@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import org.example.gestioncovoiturage.Models.Reservation;
 import org.example.gestioncovoiturage.Models.Trajet;
@@ -160,7 +161,7 @@ public class ReservationController implements Initializable {
     }
 
     @FXML
-    void ReservationPassee(ActionEvent event) {
+    void ReservationPassee(MouseEvent event) {
         LocalDateTime now = LocalDateTime.now();
         ObservableList<Reservation> reservationsPassees = reservationRepository.getReservationsBeforeDate(now);
         updateTableView(reservationsPassees);

@@ -12,7 +12,7 @@
    <children>
       <Pane prefHeight="664.0" prefWidth="183.0" style="-fx-background-color: #303134;">
          <children>
-            <Button fx:id="btnAccueil" alignment="TOP_CENTER" layoutX="10.0" layoutY="91.0" mnemonicParsing="false" onMouseClicked="#OpenAccueil" prefHeight="30.0" prefWidth="143.0" style="-fx-background-color: black;" text="Accueil" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="btnAccueil" alignment="TOP_CENTER" layoutX="10.0" layoutY="91.0" mnemonicParsing="false" onAction="#OpenAccue" prefHeight="30.0" prefWidth="143.0" style="-fx-background-color: black;" text="Accueil" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="DejaVuMathTeXGyre-Regular" size="16.0" />
                </font>
@@ -42,7 +42,7 @@
                   <Font name="DejaVuMathTeXGyre-Regular" size="16.0" />
                </font>
             </Button>
-            <ImageView fitHeight="74.0" fitWidth="143.0" layoutX="24.0" layoutY="1.0" onMouseClicked="#OpenAccueil" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="74.0" fitWidth="143.0" layoutX="24.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Images/Transport-Company-Logo-Design-PSD-Download-2048x1152.jpg" />
                </image>

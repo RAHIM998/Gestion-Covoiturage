@@ -1,5 +1,6 @@
 package org.example.gestioncovoiturage.Controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -74,9 +75,12 @@ public class WindowPrincipalController implements Initializable {
 
     private Users currentUser;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Configuration initiale
+        if (stackPane != null) {
+            OpenAccueil();
+        }
     }
 
 
@@ -129,13 +133,31 @@ public class WindowPrincipalController implements Initializable {
         btnAddUser.setManaged(visible);
     }
 
+
+
     @FXML
-    void OpenAccueil(MouseEvent event) {
-        // Implémentation pour ouvrir l'accueil
+    void OpenAccue(ActionEvent event) {
+        OpenAccueil();
+    }
+
+    void OpenAccueil() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/gestioncovoiturage/Views/Accueil.fxml"));
+            Parent root = loader.load();
+
+            AccueilContoller accueilContoller = loader.getController();
+            accueilContoller.setStackPane(stackPane);
+
+            stackPane.getChildren().clear();
+            stackPane.getChildren().add(root);
+            stackPane.setPadding(new Insets(10, 10, 10, 40));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
-    private void OpenChauffeurs() {
+    private void OpenChauffeurs(MouseEvent event) {
         try {
             // Assurez-vous que le chemin est correct et que le fichier FXML existe
             URL fxmlLocation = getClass().getResource("/org/example/gestioncovoiturage/Views/Users/ListUsers.fxml");
